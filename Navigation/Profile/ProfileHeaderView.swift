@@ -9,18 +9,6 @@ import UIKit
 
 class ProfileHeaderView: UIView {
     
-    private var statusText = String()
-
-    override init(frame: CGRect) {
-             super.init(frame: frame)
-             setupLayout()
-        
-         }
-
-         required init?(coder: NSCoder) {
-             super.init(coder: coder)
-         }
-
     lazy var profileAvatarImage: UIImageView = {
         let tempImage = UIImage(named: "5631")
         let profileAvatarImage = UIImageView()
@@ -68,12 +56,6 @@ class ProfileHeaderView: UIView {
             return showStatusButton
         }()
     
-    @objc private func buttonPressed() {
-        profileStatusTextField.text = statusText
-        self.endEditing(true)
-        print(statusText)
-    }
-    
     lazy var newStatus: UITextField = {
         let newStatus = UITextField()
         newStatus.translatesAutoresizingMaskIntoConstraints = false
@@ -88,6 +70,23 @@ class ProfileHeaderView: UIView {
         newStatus.addTarget(self, action: #selector(statusTextChanges), for: .editingChanged)
             return newStatus
          }()
+        
+    override init(frame: CGRect) {
+             super.init(frame: frame)
+             setupLayout()
+         }
+
+         required init?(coder: NSCoder) {
+             super.init(coder: coder)
+         }
+    
+    private var statusText = String()
+    
+    @objc private func buttonPressed() {
+        profileStatusTextField.text = statusText
+        self.endEditing(true)
+        print(statusText)
+    }
     
     @objc private func statusTextChanges() {
         statusText = newStatus.text ?? "No text"
@@ -122,5 +121,4 @@ class ProfileHeaderView: UIView {
             showStatusButton.heightAnchor.constraint(equalToConstant: 50.0)
         ])
     }
-
 }
