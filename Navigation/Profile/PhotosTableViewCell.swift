@@ -93,6 +93,10 @@ class PhotosTabelViewCell: UITableViewCell {
         return image
     }()
     
+    required init?(coder: NSCoder) {
+        fatalError("inir(coder:) has not been implemented")
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
@@ -100,10 +104,6 @@ class PhotosTabelViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupLayout()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("inir(coder:) has not been implemented")
     }
     
     private func setupLayout() {

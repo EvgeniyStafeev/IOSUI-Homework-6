@@ -9,14 +9,6 @@ import UIKit
 
 class PhotosViewController: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.backgroundColor = .systemGray6
-        self.title = "Фото Галерея"
-        self.navigationController?.navigationBar.isHidden = false
-        setupLayout()
-    }
-    
     private lazy var layout: UICollectionViewFlowLayout = {
         $0.scrollDirection = .vertical
         $0.minimumLineSpacing = 8
@@ -25,17 +17,25 @@ class PhotosViewController: UIViewController {
     }(UICollectionViewFlowLayout())
     
     private lazy var collectionView: UICollectionView = {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.backgroundColor = .white
-            $0.dataSource = self
-            $0.delegate = self
-            $0.register(PhotosCollectionViewCell.self, forCellWithReuseIdentifier: PhotosCollectionViewCell.identifier)
-            return $0
-        }(UICollectionView(frame: .zero, collectionViewLayout: self.layout))
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.backgroundColor = .white
+        $0.dataSource = self
+        $0.delegate = self
+        $0.register(PhotosCollectionViewCell.self, forCellWithReuseIdentifier: PhotosCollectionViewCell.identifier)
+        return $0
+    }(UICollectionView(frame: .zero, collectionViewLayout: self.layout))
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = .systemGray6
+        self.title = "Фото Галерея"
+        self.navigationController?.navigationBar.isHidden = false
+        setupLayout()
     }
     
     private func setupLayout() {

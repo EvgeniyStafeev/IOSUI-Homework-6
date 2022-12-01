@@ -21,12 +21,6 @@ class LogInViewController: UIViewController {
         return $0
     }(UIView())
         
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        setupLayout()
-    }
-
     private let logoImage: UIImageView = {
         let logoImage = UIImageView()
         logoImage.translatesAutoresizingMaskIntoConstraints = false
@@ -121,6 +115,12 @@ class LogInViewController: UIViewController {
     @objc private func keyboardHide() {
         scrollView.contentInset = .zero
         scrollView.verticalScrollIndicatorInsets = .zero
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+        setupLayout()
     }
     
     private func setupLayout() {
